@@ -4,10 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@RestController
 public class ProductController {
     public static Map<Object, Product> productController = new HashMap<>();
 
@@ -33,4 +35,5 @@ public class ProductController {
     public ResponseEntity<Object> getProduct() {
         return new ResponseEntity<>(productController.values(), HttpStatus.OK);
     }
+
 }
