@@ -1,39 +1,32 @@
 package com.example.springrestservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+
 @RestController
+@RequestMapping("/api/products")
 public class ProductController {
-    public static Map<Object, Product> productController = new HashMap<>();
+    private final ProductService productService;
 
-    static {
-        Product dellLaptop = new Product();
-        dellLaptop.setProductID(1);
-        dellLaptop.setProductName("Dell Inspiron");
-        productController.put(dellLaptop.getProductID(), dellLaptop);
-
-        Product hpLaptop = new Product();
-        hpLaptop.setProductID(2);
-        hpLaptop.setProductName("HP Pavilion");
-        productController.put(hpLaptop.getProductID(), hpLaptop);
-
-        Product lenovoLaptop = new Product();
-        lenovoLaptop.setProductID(3);
-        lenovoLaptop.setProductName("Lenovo ThinkPad");
-        productController.put(lenovoLaptop.getProductID(), lenovoLaptop);
-
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @RequestMapping(value = "/allProducts")
-    public ResponseEntity<Object> getProduct() {
-        return new ResponseEntity<>(productController.values(), HttpStatus.OK);
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
+    @PostMapping
+    public void addProduct(@RequestBody Product product) {
+        productService.addProduct(product);
+    }
 }

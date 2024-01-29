@@ -1,22 +1,40 @@
 package com.example.springrestservice;
 
 public class Product {
-    int productID;
-    String productName;
+    private Long id;
+    private String name;
+    private double price;
 
-    public int getProductID() {
-        return productID;
+    // Constructors, getters, and setters
+
+
+    public Product(Long id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public Long getId() {
+        return id;
     }
 
-    public String getProductName() {
-        return productName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
