@@ -1,5 +1,11 @@
 package com.example.springrestservice.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "user_details")
 public class UserModel {
     public String email;
     public String emp_pos;
@@ -7,7 +13,13 @@ public class UserModel {
     public String last_name;
     public String full_name;
     public String team_lead;
+
+    @Id
     public String user_uid;
+
+    public UserModel() {
+
+    }
 
     public UserModel(String email,
                      String emp_pos,

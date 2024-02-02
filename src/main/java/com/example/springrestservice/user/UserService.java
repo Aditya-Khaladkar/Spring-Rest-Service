@@ -1,12 +1,23 @@
 package com.example.springrestservice.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface UserService {
+@Service
+public class UserService{
 
-    List<UserModel> getAllUsers();
+    @Autowired
+    UserRepository userRepository;
 
-    UserModel getUserById(String userUID);
+    // CREATE
+    public UserModel addUser(UserModel userModel) {
+        return userRepository.save(userModel);
+    }
 
-    void addUser(UserModel userModel);
+    // GET ALL USER
+    public List<UserModel> getAllUser() {
+        return userRepository.findAll();
+    }
 }
