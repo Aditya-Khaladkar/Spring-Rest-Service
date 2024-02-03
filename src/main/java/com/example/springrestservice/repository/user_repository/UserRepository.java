@@ -1,5 +1,6 @@
-package com.example.springrestservice.user;
+package com.example.springrestservice.repository.user_repository;
 
+import com.example.springrestservice.user.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
