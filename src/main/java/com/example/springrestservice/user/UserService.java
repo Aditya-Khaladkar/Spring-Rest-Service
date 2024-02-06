@@ -21,4 +21,9 @@ public class UserService{
     public List<UserModel> getAllUser() {
         return userRepository.findAll();
     }
+
+    // DELETE USER BY ID
+    public void deleteUser(String userUID) {
+        userRepository.deleteById(userUID);
+    }
 }
